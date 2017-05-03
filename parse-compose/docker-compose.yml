@@ -2,10 +2,12 @@ version: '2'
 services:
   db:
     image: "mongo"
+    mem_limit: 200000000
     volumes:
       - /data/parse/db:/data/db 
   parse-server:
     image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/parse-server"
+    mem_limit: 200000000
     ports:
       - "1337:1337"
     environment:

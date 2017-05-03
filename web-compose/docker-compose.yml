@@ -2,17 +2,30 @@ version: '2'
 services:
   c-desk-app:
     image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/dakya-web"
+    mem_limit: 300000000        
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV
   login:
+    mem_limit: 300000000
     image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/dakya-login"
     ports:
       - "3001:3001"
     environment:
       - PARSE_APPLICATION_ID
       - PARSE_API_SERVER_URL
+  nginx:
+    mem_limit: 300000000
+    image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/dakya-nginx"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    extra_hosts:
+      - "ec2-dakya-m1:${MACHINE1_IP}"
+      - "ec2-dakya-m2:${MACHINE2_IP}"
 
 
 

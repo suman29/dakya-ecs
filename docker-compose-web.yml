@@ -1,0 +1,23 @@
+version: '2'
+services:
+  c-desk-app:
+    image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/dakya-web"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV
+  login:
+    image: "246532371770.dkr.ecr.us-east-1.amazonaws.com/dakya-login"
+    ports:
+      - "3001:3001"
+    environment:
+      - PARSE_APPLICATION_ID
+      - PARSE_API_SERVER_URL
+
+
+
+
+
+
+
+
